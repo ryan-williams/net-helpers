@@ -1,5 +1,5 @@
 
-export nh="$s/net-helpers"
+export nh="$(dirname "${BASH_SOURCE[0]}")/net-helpers"
 
 alias lsp=ps-port
 alias lp=ps-port
