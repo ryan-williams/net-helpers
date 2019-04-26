@@ -1,1 +1,9 @@
-curl -o /dev/null --silent --head --write-out '%{http_code}\n' "$@"
+#!/usr/bin/env bash
+
+if [ $# -eq 0 ]; then
+	cat | xargs "$0"
+else
+	for url in "$@"; do
+		curl -o /dev/null --silent --head --write-out '%{http_code}\n' "$url"
+	done
+fi

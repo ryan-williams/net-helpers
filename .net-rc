@@ -25,3 +25,5 @@ defn ith ip-to-hostname
 defn pi parse-ip
 
 alias wg=wget
+alias unroll-url="curl -Ls -o /dev/null -w '%{url_effective}\n'"
+defn ur unroll-url
