@@ -27,3 +27,32 @@ defn pi parse-ip
 alias wg=wget
 alias unroll-url="curl -Ls -o /dev/null -w '%{url_effective}\n'"
 defn ur unroll-url
+
+telnet_local_port() {
+  if [ $# -eq 2 ]; then
+    opt="$1"
+    shift
+    port="$1"
+    shift
+    if [ "$opt" -eq "-1" ]; then
+      host="127.0.0.1"
+    elif [ "$opt" -eq "-0" ]; then
+      host="0.0.0.0"
+    else
+      echo "Usage: $0 [-0|-1] <port>" >&2
+      return 1
+    fi
+  elif [ $# -eq 1 ]; then
+    host=localhost
+    port="$1"
+    shift
+  else
+    echo "Usage: $0 [-0|-1] <port>" >&2
+    return 1
+  fi
+  telnet "$host" "$port"
+}
+export -f telnet_local_port
+
+defn tlp telnet_local_port
+defn tnp telnet_local_port
