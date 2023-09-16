@@ -1,6 +1,7 @@
 
 export nh="$(dirname "${BASH_SOURCE[0]}")/net-helpers"
 
+alias digs="dig +short"
 alias lsp=ps-port
 alias lp=ps-port
 alias psp=ps-port
