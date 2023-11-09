@@ -94,3 +94,9 @@ defn ttn test_telnet
 # }
 # export -f urldecode
 # defn ud urldecode
+
+response_headers() {
+    curl -sSD- $url -o /dev/null "$@"
+}
+export -f response_headers
+defn crh response_headers
