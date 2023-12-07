@@ -100,3 +100,27 @@ response_headers() {
 }
 export -f response_headers
 defn crh response_headers
+
+curl_size() {
+    curl -sSI "$@" | grep -i '^Content-Length' | awk '{print $2}'
+}
+export -f curl_size
+defn csz curl_size
+
+curl_size_human_readable() {
+    curl_size "$@" | tr -d '\r' | numfmt --to=iec
+}
+export -f curl_size_human_readable
+defn cszh curl_size_human_readable
+
+curl_size_follow_redirects() {
+    curl_size -L "$@"
+}
+export -f curl_size_follow_redirects
+defn cszl curl_size_follow_redirects
+
+curl_size_follow_redirects_human_readable() {
+    curl_size_follow_redirects "$@" | numfmt --to=iec
+}
+export -f curl_size_follow_redirects_human_readable
+defn cszlh curl_size_follow_redirects_human_readable
