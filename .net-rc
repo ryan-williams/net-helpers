@@ -124,3 +124,8 @@ curl_size_follow_redirects_human_readable() {
 }
 export -f curl_size_follow_redirects_human_readable
 defn cszlh curl_size_follow_redirects_human_readable
+
+defn ch curl -I
+defn chl curl -IL
+defn ci curl -I
+defn cil curl -IL
