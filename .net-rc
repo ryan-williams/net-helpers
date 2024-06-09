@@ -19,6 +19,18 @@ alias pgc="ping google.com"
 alias psg="ps aux | grep"
 alias psgi="ps aux | grep -i"
 
+proc_memory_by_name() {
+    ps aux | grep "$1" | awk '{print $11,$6}' | grep "$1" | awk '{ print $2*1000 }'
+}
+export -f proc_memory_by_name
+defn pmn proc_memory_by_name
+
+proc_memory_by_name_human() {
+    proc_memory_by_name "$@" | numfmt --to=iec
+}
+export -f proc_memory_by_name_human
+defn pmnh proc_memory_by_name_human
+
 alias tp="htop --sort-key cpu"
 export UNAME="$(uname)"
 
