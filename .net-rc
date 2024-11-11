@@ -52,7 +52,7 @@ telnet_local_port() {
     elif [ "$opt" -eq "-0" ]; then
       host="0.0.0.0"
     else
-      echo "Usage: $0 [-0|-1] <port>" >&2
+      echo "Usage: ${FUNCNAME[0]} [-0|-1] <port>" >&2
       return 1
     fi
   elif [ $# -eq 1 ]; then
@@ -60,7 +60,7 @@ telnet_local_port() {
     port="$1"
     shift
   else
-    echo "Usage: $0 [-0|-1] <port>" >&2
+    echo "Usage: ${FUNCNAME[0]} [-0|-1] <port>" >&2
     return 1
   fi
   telnet "$host" "$port"
