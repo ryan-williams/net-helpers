@@ -31,6 +31,15 @@ proc_memory_by_name_human() {
 export -f proc_memory_by_name_human
 defn pmnh proc_memory_by_name_human
 
+sudo_htop() {
+    local sudo=
+    if [ "$USER" != root ]; then
+        sudo=sudo
+    fi
+    $sudo htop
+}
+alias sht=sudo_htop
+
 alias tp="htop --sort-key cpu"
 export UNAME="$(uname)"
 
